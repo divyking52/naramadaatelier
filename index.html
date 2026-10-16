@@ -1,0 +1,3176 @@
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Narmada Atelier — खूबसूरती का खिताब | Indore</title>
+<meta name="description" content="Narmada Atelier — A clothing brand for Indians, by Indians. Heritage-meets-modern luxury Indian couture from Indore. Sarees, Lehengas, Indo-Western & Women's Wear." />
+<meta property="og:title" content="Narmada Atelier — खूबसूरती का खिताब" />
+<meta property="og:description" content="Woven in Heritage. Draped in Modernity. Luxury Indian couture from Indore." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Noto+Serif+Devanagari:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg-obsidian: #090707;
+  --bg-charcoal: #120E0E;
+  --bg-maroon-deep: #24090D;
+  --bg-ivory: #FBF8F3;
+  --bg-parchment: #F2ECE1;
+  --gold-primary: #D4AF37;
+  --gold-champagne: #F3E5AB;
+  --gold-antique: #9A7B38;
+  --crimson-accent: #6B1420;
+  --text-light: #FAF6F0;
+  --text-muted: #A89F94;
+  --text-dark: #1A1412;
+  --border-hairline: rgba(212, 175, 55, 0.22);
+  --font-display: 'Cormorant Garamond', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-hindi: 'Noto Serif Devanagari', serif;
+  --header-h: 72px;
+  --ease-silk: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html.loading { overflow: hidden; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-obsidian);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.8s var(--ease-soft);
+}
+
+body.theme-ivory { background: var(--bg-ivory); color: var(--text-dark); }
+body.theme-ivory .section-dark-text { color: var(--text-dark); }
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+::selection { background: rgba(212, 175, 55, 0.35); color: var(--text-light); }
+
+/* Grain overlay */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* Custom cursor */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform, width, height;
+}
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--gold-primary);
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  width: 38px; height: 38px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.35s var(--ease-silk), height 0.35s var(--ease-silk),
+    background 0.35s, backdrop-filter 0.35s, border-color 0.35s;
+}
+.cursor-ring.is-hover {
+  width: 72px; height: 72px;
+  backdrop-filter: blur(4px);
+  background: rgba(212, 175, 55, 0.12);
+  border-color: rgba(212, 175, 55, 0.7);
+}
+.cursor-label {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-champagne);
+  opacity: 0;
+  transition: opacity 0.25s;
+  font-weight: 500;
+}
+.cursor-ring.is-hover .cursor-label { opacity: 1; }
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+  body { cursor: auto; }
+}
+@media (hover: hover) and (pointer: fine) {
+  body, a, button { cursor: none; }
+}
+
+/* Hero-only cursor trail */
+.hero-trail {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-trail-dot {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  background: radial-gradient(circle, var(--gold-champagne) 0%, var(--gold-primary) 55%, transparent 75%);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.45);
+  mix-blend-mode: screen;
+}
+@media (hover: none), (pointer: coarse) {
+  .hero-trail { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-trail { display: none !important; }
+}
+
+/* Zari scroll thread */
+.zari-thread-wrap {
+  position: fixed;
+  top: 0;
+  left: 28px;
+  width: 60px;
+  height: 100%;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.55;
+}
+.zari-thread-wrap svg { width: 100%; height: 100%; overflow: visible; }
+#zari-scroll-thread {
+  fill: none;
+  stroke: url(#zariGrad);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.shuttle {
+  fill: var(--gold-champagne);
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.8));
+}
+@media (max-width: 900px) { .zari-thread-wrap { display: none; } }
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  background: var(--bg-obsidian);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.preloader-half {
+  position: absolute;
+  left: 0; right: 0;
+  height: 50%;
+  background: var(--bg-obsidian);
+  z-index: 2;
+  transition: transform 1.1s var(--ease-silk);
+}
+.preloader-half.top { top: 0; }
+.preloader-half.bottom { bottom: 0; }
+#preloader.is-done .preloader-half.top { transform: translateY(-100%); }
+#preloader.is-done .preloader-half.bottom { transform: translateY(100%); }
+#preloader.is-done { pointer-events: none; }
+#preloader.is-gone { display: none; }
+.preloader-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  transition: opacity 0.4s ease 0.15s;
+}
+#preloader.is-done .preloader-content { opacity: 0; }
+.crest-preloader { width: 120px; height: auto; margin: 0 auto 1.5rem; }
+.crest-preloader .crest-path {
+  fill: none;
+  stroke: url(#crestGrad);
+  stroke-width: 1.5;
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawCrest 1.4s var(--ease-silk) forwards;
+}
+.crest-preloader .crest-fill {
+  fill: url(#crestGrad);
+  opacity: 0;
+  animation: fadeCrest 0.5s ease 1.1s forwards;
+}
+@keyframes drawCrest { to { stroke-dashoffset: 0; } }
+@keyframes fadeCrest { to { opacity: 1; } }
+.preloader-hindi {
+  font-family: var(--font-hindi);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--gold-champagne);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 1.2s forwards;
+  letter-spacing: 0.08em;
+}
+.preloader-brand {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 1.4s forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--border-hairline);
+  background: rgba(9, 7, 7, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: background 0.5s, border-color 0.5s;
+}
+body.theme-ivory .header {
+  background: rgba(251, 248, 243, 0.7);
+  border-bottom-color: rgba(154, 123, 56, 0.25);
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+.header-brand .crest-mini { width: 28px; height: 36px; }
+.header-brand span {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.nav-center {
+  display: flex;
+  gap: clamp(0.65rem, 1.6vw, 1.5rem);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(52vw, 560px);
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.nav-center a {
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  position: relative;
+  padding: 0.35rem 0;
+  transition: color 0.3s;
+}
+.nav-center a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--gold-primary);
+  transition: width 0.4s var(--ease-silk), left 0.4s var(--ease-silk);
+}
+.nav-center a:hover { color: var(--gold-champagne); }
+.nav-center a:hover::after { width: 100%; left: 0; }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+.audio-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--border-hairline);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: border-color 0.3s, color 0.3s;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.header-actions { z-index: 2; }
+.header-brand { z-index: 2; }
+@media (max-width: 1200px) {
+  .audio-toggle .audio-label { display: none; }
+  .nav-center a { font-size: 0.52rem; letter-spacing: 0.14em; }
+}
+.audio-toggle:hover, .audio-toggle.is-on {
+  border-color: var(--gold-primary);
+  color: var(--gold-champagne);
+}
+.audio-bars { display: flex; gap: 2px; align-items: flex-end; height: 12px; }
+.audio-bars span {
+  width: 2px;
+  background: currentColor;
+  height: 4px;
+  transition: height 0.2s;
+}
+.audio-toggle.is-on .audio-bars span {
+  animation: barPulse 0.6s ease-in-out infinite alternate;
+}
+.audio-toggle.is-on .audio-bars span:nth-child(2) { animation-delay: 0.15s; }
+.audio-toggle.is-on .audio-bars span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes barPulse { to { height: 12px; } }
+
+.btn-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid var(--gold-primary);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gold-champagne);
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.45s var(--ease-silk);
+}
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--gold-champagne), var(--gold-primary));
+  transform: translateY(100%);
+  transition: transform 0.55s var(--ease-silk);
+  z-index: -1;
+}
+.btn-gold:hover { color: var(--bg-obsidian); }
+.btn-gold:hover::before { transform: translateY(0); }
+.btn-gold.filled {
+  background: linear-gradient(135deg, var(--gold-champagne), var(--gold-primary));
+  color: var(--bg-obsidian);
+}
+.btn-gold.filled::before { background: var(--bg-obsidian); }
+.btn-gold.filled:hover { color: var(--gold-champagne); }
+.btn-ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  border: 1px solid var(--border-hairline);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: border-color 0.3s, color 0.3s;
+}
+.btn-ghost:hover { border-color: var(--gold-primary); color: var(--gold-champagne); }
+.btn-ghost .play-icon {
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 7px;
+  border-color: transparent transparent transparent currentColor;
+}
+
+.nav-toggle {
+  display: none;
+  width: 36px; height: 36px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.nav-toggle span {
+  display: block;
+  height: 1px;
+  background: var(--gold-primary);
+  transition: transform 0.3s;
+}
+
+/* Sections common */
+.section {
+  position: relative;
+  padding: clamp(4rem, 10vh, 8rem) clamp(1.25rem, 5vw, 5rem);
+}
+.section-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  margin-bottom: 1rem;
+}
+.reveal-wrap { overflow: hidden; display: block; }
+[data-reveal] {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 0.9s var(--ease-silk);
+  transition-delay: var(--delay, 0ms);
+}
+[data-reveal].is-in { transform: translateY(0); }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  padding-top: calc(var(--header-h) + 2rem);
+  padding-bottom: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-grid-frame {
+  position: absolute;
+  inset: calc(var(--header-h) + 1rem) 1.5rem 1.5rem 1.5rem;
+  border: 1px solid var(--border-hairline);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-corner {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  opacity: 0.85;
+}
+.hero-corner.tl { top: -1px; left: -1px; }
+.hero-corner.tr { top: -1px; right: -1px; transform: scaleX(-1); }
+.hero-corner.bl { bottom: -1px; left: -1px; transform: scaleY(-1); }
+.hero-corner.br { bottom: -1px; right: -1px; transform: scale(-1); }
+.hero-jaali {
+  position: absolute;
+  inset: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  opacity: 0.07;
+  pointer-events: none;
+}
+.hero-vine {
+  position: absolute;
+  top: 18%;
+  width: 48px;
+  height: 55%;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-vine.left { left: 0.35rem; }
+.hero-vine.right { right: 0.35rem; transform: scaleX(-1); }
+.hero-buti-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-arch-ornament {
+  position: absolute;
+  width: min(92%, 420px);
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+.hero-arch-ornament.top {
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(70%, 280px);
+}
+.hero-arch-ornament.base {
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(85%, 340px);
+}
+.arch-jaali-ring {
+  position: absolute;
+  inset: -14px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+@media (max-width: 900px) {
+  .hero-vine, .hero-jaali, .hero-buti-field { display: none; }
+}
+
+.hero-editorial { position: relative; z-index: 1; padding-left: clamp(0, 2vw, 2rem); }
+.eyebrow {
+  display: inline-block;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-hairline);
+  padding: 0.45rem 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.hindi-pill {
+  font-family: var(--font-hindi);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  color: var(--gold-champagne);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.06em;
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  max-width: 14ch;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--gold-primary);
+  font-weight: 400;
+}
+.hero-sub {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 42ch;
+  margin-bottom: 2.25rem;
+  line-height: 1.75;
+}
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+.hero-archway {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+.mandala-halo {
+  position: absolute;
+  width: min(92%, 480px);
+  aspect-ratio: 1;
+  animation: spinSlow 60s linear infinite;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+.mandala-halo.inner {
+  width: min(72%, 360px);
+  animation: spinSlow 90s linear infinite reverse;
+  opacity: 0.35;
+}
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+.arch-frame {
+  position: relative;
+  width: min(78%, 360px);
+  aspect-ratio: 3 / 4.6;
+  border: 1px solid var(--border-hairline);
+  background: transparent;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.45);
+  overflow: visible;
+}
+.arch-media {
+  position: absolute;
+  inset: 0;
+  border-radius: 240px 240px 12px 12px;
+  overflow: hidden;
+  background: var(--bg-maroon-deep);
+  box-shadow: inset 0 0 60px rgba(107, 20, 32, 0.3);
+}
+.arch-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+.saree-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 55%, rgba(36, 9, 13, 0.85) 100%),
+    linear-gradient(135deg, #FBF8F3 0%, #F2ECE1 35%, #D4AF37 36%, #9A7B38 42%, #6B1420 43%, #6B1420 58%, #D4AF37 59%, #FBF8F3 70%),
+    radial-gradient(ellipse at 50% 20%, #FBF8F3 0%, #E8DFD0 40%, #C9B896 100%);
+}
+.saree-fallback::before {
+  content: '';
+  position: absolute;
+  inset: 8% 12% 22%;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(212,175,55,0.15) 18px, rgba(212,175,55,0.15) 19px),
+    repeating-linear-gradient(-45deg, transparent, transparent 22px, rgba(154,123,56,0.08) 22px, rgba(154,123,56,0.08) 23px);
+  border-radius: 40% 40% 8% 8%;
+  opacity: 0.7;
+}
+.saree-fallback::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 18%;
+  background: linear-gradient(90deg,
+    #6B1420 0%, #8B1A28 20%, #D4AF37 21%, #6B1420 22%,
+    #6B1420 40%, #F3E5AB 41%, #6B1420 42%,
+    #6B1420 60%, #D4AF37 61%, #6B1420 62%,
+    #6B1420 80%, #C9A227 81%, #6B1420 100%);
+  box-shadow: inset 0 4px 0 rgba(212,175,55,0.4);
+}
+.arch-label {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-champagne);
+  z-index: 2;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+}
+.drop-hint {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(250,246,240,0.55);
+  z-index: 3;
+  background: rgba(9,7,7,0.5);
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border-hairline);
+  white-space: nowrap;
+  transition: opacity 0.3s;
+}
+.arch-frame.is-filled .drop-hint { opacity: 0; pointer-events: none; }
+.arch-frame.is-dragover {
+  outline: 2px dashed var(--gold-primary);
+  outline-offset: 4px;
+}
+
+.hotspot {
+  position: absolute;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-primary);
+  background: rgba(212, 175, 55, 0.2);
+  z-index: 4;
+  cursor: none;
+  transform: translate(-50%, -50%);
+  transition: background 0.3s, transform 0.3s;
+}
+.hotspot::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,175,55,0.35);
+  animation: pulseRing 2s ease-out infinite;
+}
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.hotspot:hover, .hotspot.is-active {
+  background: var(--gold-primary);
+  transform: translate(-50%, -50%) scale(1.15);
+}
+.hs-1 { top: 28%; left: 52%; }
+.hs-2 { top: 48%; left: 38%; }
+.hs-3 { top: 72%; left: 62%; }
+.hs-4 { top: 82%; left: 35%; }
+
+.spec-card {
+  position: absolute;
+  z-index: 12;
+  width: min(240px, calc(100% - 24px));
+  max-width: 240px;
+  padding: 1rem 1.1rem;
+  background: rgba(18, 14, 14, 0.94);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-hairline);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.35s, transform 0.35s var(--ease-silk);
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+.spec-card.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.spec-card h4 {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+  font-weight: 400;
+  color: var(--gold-champagne);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+.spec-card p {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+  overflow-wrap: break-word;
+}
+.spec-card svg { width: 100%; height: 48px; opacity: 0.7; display: block; }
+
+/* Marquee */
+.marquee-section {
+  padding: 0;
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  overflow: hidden;
+  background: var(--bg-charcoal);
+}
+.marquee-row {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  padding: 1.1rem 0;
+  will-change: transform;
+}
+.marquee-row.reverse { border-top: 1px solid var(--border-hairline); }
+.marquee-track {
+  display: flex;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+  animation: marqueeL 40s linear infinite;
+}
+.marquee-row.reverse .marquee-track { animation: marqueeR 45s linear infinite; }
+.marquee-section.is-slow .marquee-track { animation-duration: 90s; }
+.marquee-section.is-slow .marquee-row.reverse .marquee-track { animation-duration: 100s; }
+@keyframes marqueeL { to { transform: translateX(-50%); } }
+@keyframes marqueeR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.marquee-item {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  white-space: nowrap;
+  font-weight: 300;
+}
+.marquee-item .diamond { color: var(--gold-primary); margin: 0 0.5rem; }
+
+/* Manifesto */
+.manifesto {
+  background: var(--bg-ivory);
+  color: var(--text-dark);
+  transition: background 0.6s;
+}
+.manifesto-inner { max-width: 920px; margin: 0 auto; text-align: center; }
+.manifesto-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+}
+.manifesto-words {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.4vw, 1.75rem);
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+.manifesto-words .word {
+  display: inline;
+  opacity: 0.2;
+  transition: opacity 0.15s linear;
+  color: var(--text-dark);
+}
+.pillars {
+  display: flex;
+  gap: 1px;
+  margin-top: 4rem;
+  min-height: 280px;
+  background: var(--border-hairline);
+  border: 1px solid rgba(154, 123, 56, 0.3);
+}
+.pillar {
+  flex: 1;
+  background: var(--bg-parchment);
+  padding: 2rem 1.5rem;
+  cursor: none;
+  transition: flex 0.6s var(--ease-silk);
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+}
+.pillar:hover, .pillar.is-active { flex: 2.5; background: #EDE6D8; }
+.pillar-num {
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-antique);
+  margin-bottom: 0.75rem;
+}
+.pillar h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+.pillar-body {
+  font-size: 0.85rem;
+  color: #5A5248;
+  line-height: 1.65;
+  max-width: 280px;
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.4s 0.15s, max-height 0.5s;
+}
+.pillar:hover .pillar-body, .pillar.is-active .pillar-body {
+  opacity: 1;
+  max-height: 200px;
+}
+.pillar-motif {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 80px;
+  height: 80px;
+  opacity: 0.35;
+  transition: opacity 0.4s, transform 0.6s var(--ease-silk);
+}
+.pillar:hover .pillar-motif, .pillar.is-active .pillar-motif {
+  opacity: 0.85;
+  transform: scale(1.1);
+}
+
+/* Anatomy */
+.anatomy {
+  background: var(--bg-obsidian);
+  color: var(--text-light);
+}
+.anatomy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  max-width: 1280px;
+  margin: 0 auto;
+  align-items: start;
+}
+.anatomy-sticky { position: sticky; top: calc(var(--header-h) + 2rem); }
+.anatomy-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+.chapter {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border-hairline);
+  transition: padding 0.3s;
+}
+.chapter:first-of-type { border-top: 1px solid var(--border-hairline); }
+.chapter.is-active { padding-left: 0.75rem; border-left: 2px solid var(--gold-primary); }
+.chapter-num {
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-antique);
+  margin-bottom: 0.35rem;
+}
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+.chapter.is-active .chapter-title { color: var(--gold-champagne); }
+.chapter-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s, opacity 0.4s;
+  line-height: 1.55;
+}
+.chapter.is-active .chapter-desc {
+  max-height: 120px;
+  opacity: 1;
+}
+.craft-stage {
+  display: grid;
+  gap: 0.75rem;
+  position: sticky;
+  top: calc(var(--header-h) + 1.5rem);
+}
+.craft-photo-wrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  max-height: min(72vh, 640px);
+  background: var(--bg-charcoal);
+  border: 1px solid var(--border-hairline);
+  overflow: hidden;
+}
+.craft-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.55s var(--ease-silk), transform 0.8s var(--ease-silk);
+  z-index: 1;
+  pointer-events: none;
+}
+.craft-photo.is-active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+.craft-photo-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(160deg, var(--bg-maroon-deep), var(--bg-charcoal)),
+    repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(212,175,55,0.06) 12px, rgba(212,175,55,0.06) 13px);
+  z-index: 0;
+}
+.craft-photo-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 35%, rgba(9,7,7,0.55) 62%, rgba(9,7,7,0.92) 100%),
+    linear-gradient(90deg, rgba(9,7,7,0.12), transparent 28%);
+}
+.craft-photo-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 5;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-champagne);
+  background: rgba(9,7,7,0.55);
+  border: 1px solid var(--border-hairline);
+  padding: 0.4rem 0.7rem;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+.craft-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+.craft-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border: 1px solid var(--border-hairline);
+  overflow: hidden;
+  padding: 0;
+  background: var(--bg-charcoal);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.craft-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: opacity 0.3s, transform 0.5s var(--ease-silk);
+}
+.craft-thumb.is-active {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.25);
+}
+.craft-thumb.is-active img,
+.craft-thumb:hover img {
+  opacity: 1;
+  transform: scale(1.06);
+}
+.craft-thumb::after {
+  content: attr(data-num);
+  position: absolute;
+  bottom: 0.3rem;
+  left: 0.35rem;
+  font-size: 0.45rem;
+  letter-spacing: 0.14em;
+  color: var(--gold-champagne);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+}
+.loom-canvas-wrap {
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  height: 38%;
+  z-index: 4;
+  background: rgba(18, 14, 14, 0.72);
+  border: 1px solid var(--border-hairline);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+#loomCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.92;
+}
+.loom-caption {
+  position: absolute;
+  bottom: 0.55rem;
+  left: 0.7rem;
+  right: 0.7rem;
+  font-size: 0.48rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  pointer-events: none;
+}
+@media (max-width: 1024px) {
+  .craft-stage { position: static; }
+  .craft-photo-wrap { max-height: none; aspect-ratio: 3 / 4; }
+  .loom-canvas-wrap { height: 34%; }
+}
+
+/* Testimonials */
+.testimonials {
+  background: var(--bg-charcoal);
+  overflow: hidden;
+}
+.testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.testimonials-head {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.testimonials-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.testimonials-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  max-width: 42ch;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-hairline);
+  border: 1px solid var(--border-hairline);
+}
+.testimonial-card {
+  background: var(--bg-obsidian);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  position: relative;
+  transition: background 0.4s;
+}
+.testimonial-card:hover { background: #0E0A0A; }
+.testimonial-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--text-light);
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+.testimonial-quote::before {
+  content: '“';
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--gold-primary);
+  opacity: 0.55;
+  margin-bottom: 0.35rem;
+}
+.testimonial-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-hairline);
+  background: linear-gradient(135deg, var(--bg-maroon-deep), var(--gold-antique));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gold-champagne);
+  flex-shrink: 0;
+}
+.testimonial-name {
+  font-size: 0.8rem;
+  color: var(--gold-champagne);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.15rem;
+}
+.testimonial-role {
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.testimonial-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 1.25rem;
+}
+.testimonial-stars span {
+  width: 10px;
+  height: 10px;
+  background: var(--gold-primary);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+/* FAQ */
+.faq {
+  background: var(--bg-obsidian);
+}
+.faq-inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.faq-head {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+.faq-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.faq-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+.faq-list {
+  border-top: 1px solid var(--border-hairline);
+}
+.faq-item {
+  border-bottom: 1px solid var(--border-hairline);
+}
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.35rem 0;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 400;
+  color: var(--text-light);
+  letter-spacing: -0.01em;
+  transition: color 0.3s;
+}
+.faq-q:hover { color: var(--gold-champagne); }
+.faq-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-hairline);
+  position: relative;
+  transition: border-color 0.3s, transform 0.4s var(--ease-silk);
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--gold-primary);
+  transform: translate(-50%, -50%);
+}
+.faq-icon::before { width: 10px; height: 1px; }
+.faq-icon::after { width: 1px; height: 10px; transition: transform 0.35s var(--ease-silk), opacity 0.35s; }
+.faq-item.is-open .faq-q { color: var(--gold-champagne); }
+.faq-item.is-open .faq-icon { border-color: var(--gold-primary); }
+.faq-item.is-open .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); opacity: 0; }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s var(--ease-silk), opacity 0.35s, padding 0.35s;
+}
+.faq-item.is-open .faq-a {
+  max-height: 220px;
+  opacity: 1;
+  padding-bottom: 1.35rem;
+}
+.faq-a p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 58ch;
+}
+@media (max-width: 900px) {
+  .testimonial-grid { grid-template-columns: 1fr; }
+}
+
+/* Lookbook */
+.lookbook { background: var(--bg-charcoal); }
+.lookbook-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.lookbook-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.filter-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.filter-pill {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-hairline);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+.filter-pill:hover, .filter-pill.is-active {
+  border-color: var(--gold-primary);
+  color: var(--gold-champagne);
+  background: rgba(212, 175, 55, 0.08);
+}
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.look-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-obsidian);
+  border: 1px solid var(--border-hairline);
+  transform-style: preserve-3d;
+  perspective: 800px;
+  transition: opacity 0.4s, transform 0.4s var(--ease-silk);
+  will-change: transform;
+}
+.look-card.is-hidden {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+.look-card:nth-child(1) { grid-column: span 7; grid-row: span 2; min-height: 520px; }
+.look-card:nth-child(2) { grid-column: span 5; min-height: 250px; }
+.look-card:nth-child(3) { grid-column: span 5; min-height: 250px; }
+.look-card:nth-child(4) { grid-column: span 12; min-height: 320px; }
+.look-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.look-media img, .look-visual {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-silk);
+}
+.look-card:hover .look-media img,
+.look-card:hover .look-visual { transform: scale(1.04); }
+.look-shimmer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  mix-blend-mode: color-dodge;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 2;
+}
+.look-card:hover .look-shimmer { opacity: 1; }
+.look-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(transparent, rgba(9,7,7,0.92));
+  z-index: 3;
+  transform: translateZ(30px);
+}
+.look-cat {
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  margin-bottom: 0.4rem;
+}
+.look-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35rem;
+}
+.look-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.look-price { color: var(--gold-champagne); letter-spacing: 0.08em; }
+.inquiry-badge {
+  font-size: 0.5rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-hairline);
+  padding: 0.25rem 0.5rem;
+  color: var(--gold-antique);
+}
+
+.v-saree {
+  background:
+    linear-gradient(160deg, #FBF8F3 0%, #EDE4D4 40%, transparent 41%),
+    linear-gradient(200deg, transparent 50%, #6B1420 50%, #4A0E16 100%),
+    radial-gradient(circle at 60% 30%, #D4AF37 0%, transparent 25%),
+    #F2ECE1;
+}
+.v-fold {
+  background:
+    repeating-linear-gradient(90deg, #FBF8F3 0px, #FBF8F3 40px, #E8DFD0 40px, #E8DFD0 42px),
+    linear-gradient(180deg, #F2ECE1, #D4C4A8);
+}
+.v-fold::after {
+  content: '';
+  position: absolute;
+  inset: 15% 10%;
+  border: 2px solid var(--gold-antique);
+  box-shadow: inset 0 0 0 8px rgba(251,248,243,0.9);
+}
+.v-lehenga {
+  background:
+    radial-gradient(ellipse at 50% 100%, #6B1420 0%, #24090D 60%),
+    linear-gradient(180deg, #3A1018, #120E0E);
+}
+.v-lehenga::before {
+  content: '';
+  position: absolute;
+  inset: 20% 25% 10%;
+  background: repeating-conic-gradient(from 0deg, transparent 0deg 8deg, rgba(212,175,55,0.15) 8deg 9deg);
+  border-radius: 50% 50% 0 0;
+}
+.v-cape {
+  background:
+    linear-gradient(135deg, #F3E5AB 0%, #D4AF37 30%, #9A7B38 50%, #2A1F18 51%, #1A1412 100%);
+}
+
+/* Consultation */
+.consult {
+  background: linear-gradient(180deg, var(--bg-obsidian) 0%, var(--bg-maroon-deep) 50%, var(--bg-obsidian) 100%);
+}
+.consult-card {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid var(--border-hairline);
+  background: rgba(18, 14, 14, 0.6);
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+.filigree {
+  position: absolute;
+  width: 48px; height: 48px;
+  pointer-events: none;
+}
+.filigree.tl { top: -1px; left: -1px; }
+.filigree.tr { top: -1px; right: -1px; transform: scaleX(-1); }
+.filigree.bl { bottom: -1px; left: -1px; transform: scaleY(-1); }
+.filigree.br { bottom: -1px; right: -1px; transform: scale(-1); }
+.consult-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.consult-sub {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(9, 7, 7, 0.5);
+  border: 1px solid var(--border-hairline);
+  padding: 0.85rem 1rem;
+  color: var(--text-light);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.3s;
+  border-radius: 0;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold-primary); }
+.form-group textarea { min-height: 100px; resize: vertical; }
+.occasion-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--border-hairline);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+.chip.is-selected, .chip:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-champagne);
+  background: rgba(212, 175, 55, 0.1);
+}
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  justify-content: center;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-hairline);
+}
+.social-links a {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+.social-links a:hover { color: var(--gold-primary); }
+
+/* Footer */
+.footer {
+  background: var(--bg-obsidian);
+  padding: 4rem clamp(1.25rem, 5vw, 5rem) 2rem;
+  border-top: 1px solid var(--border-hairline);
+}
+.footer-wordmark {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+  overflow: hidden;
+}
+.footer-wordmark svg { width: 100%; height: auto; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+.footer-brand-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--gold-champagne);
+}
+.footer-hindi {
+  font-family: var(--font-hindi);
+  font-size: 1rem;
+  color: var(--gold-antique);
+  margin-bottom: 1rem;
+}
+.footer-coords {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-weight: 300;
+}
+.footer h5 {
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  margin-bottom: 1rem;
+}
+.footer-links a {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--gold-champagne); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-hairline);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+.back-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  transition: color 0.3s;
+}
+.back-top:hover { color: var(--gold-champagne); }
+.back-top svg { width: 16px; height: 24px; }
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: rgba(9, 7, 7, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  padding: 1.5rem;
+}
+.modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+.modal {
+  background: var(--bg-charcoal);
+  border: 1px solid var(--border-hairline);
+  width: min(640px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.5s var(--ease-silk);
+}
+.modal-overlay.is-open .modal { transform: translateY(0); }
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 36px; height: 36px;
+  border: 1px solid var(--border-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  z-index: 2;
+  transition: border-color 0.3s, color 0.3s;
+}
+.modal-close:hover { border-color: var(--gold-primary); color: var(--gold-champagne); }
+.modal-body { padding: 2.5rem 2rem; }
+.modal-video-placeholder {
+  aspect-ratio: 16/9;
+  background: var(--bg-obsidian);
+  border: 1px solid var(--border-hairline);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.modal-video-placeholder p {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.drawer-media {
+  aspect-ratio: 3/4;
+  max-height: 360px;
+  background: var(--bg-obsidian);
+  overflow: hidden;
+}
+.drawer-media .look-visual, .drawer-media img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.drawer-info { padding: 1.75rem; }
+.drawer-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.drawer-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+/* Upload FAB */
+.upload-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: auto;
+  z-index: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.1rem;
+  background: rgba(18, 14, 14, 0.9);
+  border: 1px solid var(--gold-primary);
+  font-size: 0.52rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-champagne);
+  backdrop-filter: blur(12px);
+  transition: background 0.3s, transform 0.3s;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.upload-fab:hover {
+  background: rgba(212, 175, 55, 0.15);
+  transform: translateY(-2px);
+}
+.upload-fab input { display: none; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  z-index: 850;
+  padding: 0.85rem 1.25rem;
+  background: var(--bg-charcoal);
+  border: 1px solid var(--gold-primary);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-champagne);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s, transform 0.35s;
+  pointer-events: none;
+}
+.toast.is-show { opacity: 1; transform: translateY(0); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .mandala-halo, .mandala-halo.inner { animation: none; }
+  .marquee-track { animation: none !important; }
+  [data-reveal] { transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .nav-center { display: none; }
+  .nav-toggle { display: flex; }
+  .hero { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-archway { min-height: 55vh; order: -1; }
+  .anatomy-grid { grid-template-columns: 1fr; }
+  .anatomy-sticky { position: static; }
+  .look-card:nth-child(1) { grid-column: span 12; min-height: 400px; }
+  .look-card:nth-child(2),
+  .look-card:nth-child(3) { grid-column: span 6; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .header-brand span { display: none; }
+  .btn-gold.header-book { display: none; }
+  .pillars { flex-direction: column; min-height: auto; }
+  .pillar { flex: none !important; }
+  .pillar-body { opacity: 1; max-height: none; }
+  .look-card:nth-child(2),
+  .look-card:nth-child(3) { grid-column: span 12; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .upload-fab span.txt { display: none; }
+  .hero-grid-frame { display: none; }
+}
+
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 880;
+  background: rgba(9,7,7,0.97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.mobile-nav.is-open { opacity: 1; pointer-events: auto; }
+.mobile-nav a {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+}
+.mobile-nav a:hover { color: var(--gold-primary); }
+</style>
+</head>
+<body>
+
+<!-- Grain -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"><span class="cursor-label" id="cursorLabel"></span></div>
+<div class="hero-trail" id="heroTrail" aria-hidden="true"></div>
+
+<!-- Zari Thread -->
+<div class="zari-thread-wrap" aria-hidden="true">
+  <svg viewBox="0 0 60 4000" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="zariGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#F3E5AB"/>
+        <stop offset="50%" stop-color="#D4AF37"/>
+        <stop offset="100%" stop-color="#9A7B38"/>
+      </linearGradient>
+    </defs>
+    <path id="zari-scroll-thread" d="M30,0 C30,80 10,120 30,200 C50,280 50,320 30,400 C10,480 10,520 30,600 C45,680 50,720 30,800 C15,880 10,920 30,1000 C50,1080 55,1120 30,1200 C10,1280 5,1320 30,1400 C48,1480 55,1520 30,1600 C12,1680 8,1720 30,1800 C52,1880 55,1920 30,2000 C8,2080 5,2120 30,2200 C50,2280 52,2320 30,2400 C12,2480 10,2520 30,2600 C48,2680 50,2720 30,2800 C15,2880 12,2920 30,3000 C45,3080 48,3120 30,3200 C15,3280 12,3320 30,3400 C48,3480 50,3520 30,3600 C15,3680 12,3720 30,3800 C42,3880 40,3920 30,4000"/>
+    <circle class="shuttle" id="shuttle" r="3.5" cx="30" cy="0"/>
+  </svg>
+</div>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="preloader-half top"></div>
+  <div class="preloader-half bottom"></div>
+  <div class="preloader-content">
+    <svg class="crest-preloader" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="crestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F3E5AB"/>
+          <stop offset="50%" stop-color="#D4AF37"/>
+          <stop offset="100%" stop-color="#8A6623"/>
+        </linearGradient>
+      </defs>
+      <!-- N letter -->
+      <path class="crest-path" d="M22,20 L22,100 M22,20 L78,100 M78,20 L78,100"/>
+      <!-- Woman silhouette intertwined -->
+      <path class="crest-path" d="M68,28 C72,26 76,30 75,36 C74,42 70,44 68,48 C66,52 68,58 72,62 C78,70 82,78 80,90 C78,98 72,102 65,100 C58,98 55,90 58,82 C60,76 64,72 62,65 C60,58 55,55 52,48 C50,42 54,36 60,34 C64,32 66,30 68,28"/>
+      <!-- Hair bun / gajra -->
+      <circle class="crest-path" cx="70" cy="24" r="5"/>
+      <!-- Flowing pallu flourish -->
+      <path class="crest-path" d="M78,95 C85,100 90,105 88,112 C86,118 78,116 72,110 C68,106 70,100 75,98"/>
+      <!-- Lotus crown -->
+      <path class="crest-fill" d="M40,112 Q50,100 60,112 Q50,108 40,112 M35,115 Q50,105 65,115 Q50,112 35,115 M42,118 Q50,110 58,118"/>
+    </svg>
+    <p class="preloader-hindi">खूबसूरती का खिताब</p>
+    <p class="preloader-brand">Narmada Atelier</p>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header" id="header">
+  <a href="#top" class="header-brand" data-cursor="EXPLORE">
+    <svg class="crest-mini" viewBox="0 0 100 130" aria-hidden="true">
+      <defs>
+        <linearGradient id="crestGradH" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F3E5AB"/>
+          <stop offset="50%" stop-color="#D4AF37"/>
+          <stop offset="100%" stop-color="#8A6623"/>
+        </linearGradient>
+      </defs>
+      <path fill="none" stroke="url(#crestGradH)" stroke-width="3" d="M22,20 L22,100 M22,20 L78,100 M78,20 L78,100"/>
+      <path fill="url(#crestGradH)" opacity="0.85" d="M68,28 C72,26 76,30 75,36 C74,42 70,44 68,48 C66,52 68,58 72,62 C78,70 82,78 80,90 C78,98 72,102 65,100 C58,98 55,90 58,82 C60,76 64,72 62,65 C60,58 55,55 52,48 C50,42 54,36 60,34 C64,32 66,30 68,28Z"/>
+      <circle fill="url(#crestGradH)" cx="70" cy="24" r="5"/>
+      <path fill="url(#crestGradH)" d="M40,112 Q50,100 60,112 Q50,108 40,112Z"/>
+    </svg>
+    <span>Narmada Atelier</span>
+  </a>
+  <nav class="nav-center" aria-label="Primary">
+    <a href="#heritage" data-cursor="EXPLORE">The Heritage</a>
+    <a href="#anatomy" data-cursor="EXPLORE">Anatomy of Zari</a>
+    <a href="#voices" data-cursor="EXPLORE">Client Voices</a>
+    <a href="#bespoke" data-cursor="EXPLORE">Bespoke Drape</a>
+  </nav>
+  <div class="header-actions">
+    <button class="audio-toggle" id="audioToggle" type="button" aria-pressed="false" data-cursor="EXPLORE" aria-label="Toggle ambience">
+      <span class="audio-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="audio-label">Ambience</span>
+    </button>
+    <a href="#bespoke" class="btn-gold header-book" data-cursor="EXPLORE">Book Private Viewing</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+  <a href="#heritage">The Heritage</a>
+  <a href="#anatomy">Anatomy of Zari</a>
+  <a href="#voices">Client Voices</a>
+  <a href="#faq">FAQ</a>
+  <a href="#bespoke">Bespoke Drape</a>
+  <a href="#bespoke" class="btn-gold">Book Private Viewing</a>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="section hero" id="hero">
+    <!-- Floating floral buti field -->
+    <svg class="hero-buti-field" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <g id="buti">
+          <circle cx="0" cy="0" r="3" fill="none" stroke="#D4AF37" stroke-width="0.8"/>
+          <path d="M0,-8 Q3,-2 0,0 Q-3,-2 0,-8 M0,8 Q3,2 0,0 Q-3,2 0,8 M-8,0 Q-2,3 0,0 Q-2,-3 -8,0 M8,0 Q2,3 0,0 Q2,-3 8,0" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+          <circle cx="0" cy="0" r="1.2" fill="#F3E5AB"/>
+        </g>
+      </defs>
+      <use href="#buti" x="80" y="120"/><use href="#buti" x="220" y="280" transform="rotate(20 220 280)"/>
+      <use href="#buti" x="140" y="480"/><use href="#buti" x="320" y="160" transform="rotate(-15 320 160)"/>
+      <use href="#buti" x="980" y="140"/><use href="#buti" x="1080" y="320" transform="rotate(25 1080 320)"/>
+      <use href="#buti" x="920" y="520"/><use href="#buti" x="1120" y="600" transform="rotate(-10 1120 600)"/>
+      <use href="#buti" x="560" y="80"/><use href="#buti" x="700" y="700" transform="rotate(35 700 700)"/>
+      <use href="#buti" x="60" y="680"/><use href="#buti" x="400" y="620"/>
+    </svg>
+
+    <!-- Side vine filigree -->
+    <svg class="hero-vine left" viewBox="0 0 48 400" aria-hidden="true">
+      <path d="M24,0 C18,40 30,80 24,120 C16,170 32,210 24,260 C18,300 28,340 24,400" fill="none" stroke="#9A7B38" stroke-width="0.8"/>
+      <path d="M24,40 C10,48 8,62 18,70 M24,100 C38,108 40,122 30,130 M24,180 C10,188 8,202 18,210 M24,260 C38,268 40,282 30,290 M24,330 C12,338 10,352 20,358" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+      <circle cx="24" cy="60" r="2.5" fill="none" stroke="#F3E5AB" stroke-width="0.6"/>
+      <circle cx="24" cy="150" r="2.5" fill="none" stroke="#F3E5AB" stroke-width="0.6"/>
+      <circle cx="24" cy="240" r="2.5" fill="none" stroke="#F3E5AB" stroke-width="0.6"/>
+      <circle cx="24" cy="340" r="2.5" fill="none" stroke="#F3E5AB" stroke-width="0.6"/>
+      <path d="M24,58 Q28,50 32,58 Q28,54 24,58 M24,148 Q28,140 32,148 Q28,144 24,148" fill="#D4AF37" opacity="0.5"/>
+    </svg>
+    <svg class="hero-vine right" viewBox="0 0 48 400" aria-hidden="true">
+      <path d="M24,0 C18,40 30,80 24,120 C16,170 32,210 24,260 C18,300 28,340 24,400" fill="none" stroke="#9A7B38" stroke-width="0.8"/>
+      <path d="M24,40 C10,48 8,62 18,70 M24,100 C38,108 40,122 30,130 M24,180 C10,188 8,202 18,210 M24,260 C38,268 40,282 30,290 M24,330 C12,338 10,352 20,358" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+      <circle cx="24" cy="60" r="2.5" fill="none" stroke="#F3E5AB" stroke-width="0.6"/>
+      <circle cx="24" cy="150" r="2.5" fill="none" stroke="#F3E5AB" stroke-width="0.6"/>
+      <circle cx="24" cy="240" r="2.5" fill="none" stroke="#F3E5AB" stroke-width="0.6"/>
+      <circle cx="24" cy="340" r="2.5" fill="none" stroke="#F3E5AB" stroke-width="0.6"/>
+    </svg>
+
+    <div class="hero-grid-frame" aria-hidden="true">
+      <!-- Jaali lattice inside frame -->
+      <svg class="hero-jaali" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <pattern id="jaaliPat" width="8" height="8" patternUnits="userSpaceOnUse">
+            <path d="M0,4 L4,0 L8,4 L4,8 Z" fill="none" stroke="#D4AF37" stroke-width="0.35"/>
+            <circle cx="4" cy="4" r="0.6" fill="#D4AF37"/>
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#jaaliPat)"/>
+      </svg>
+      <!-- Lotus crosshair corners -->
+      <svg class="hero-corner tl" viewBox="0 0 56 56">
+        <path d="M1,1 L28,1 M1,1 L1,28" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <path d="M1,14 Q14,14 14,1 M1,22 Q22,22 22,1" fill="none" stroke="#9A7B38" stroke-width="0.6"/>
+        <path d="M8,8 Q14,2 20,8 Q14,6 8,8 M6,10 Q14,4 22,10 Q14,8 6,10" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+        <circle cx="14" cy="14" r="2" fill="none" stroke="#F3E5AB" stroke-width="0.7"/>
+        <path d="M14,8 L14.8,12.5 L14,11 L13.2,12.5 Z M14,20 L14.8,15.5 L14,17 L13.2,15.5 Z M8,14 L12.5,14.8 L11,14 L12.5,13.2 Z M20,14 L15.5,14.8 L17,14 L15.5,13.2 Z" fill="#D4AF37"/>
+      </svg>
+      <svg class="hero-corner tr" viewBox="0 0 56 56">
+        <path d="M1,1 L28,1 M1,1 L1,28" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <path d="M1,14 Q14,14 14,1 M1,22 Q22,22 22,1" fill="none" stroke="#9A7B38" stroke-width="0.6"/>
+        <path d="M8,8 Q14,2 20,8 Q14,6 8,8" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+        <circle cx="14" cy="14" r="2" fill="none" stroke="#F3E5AB" stroke-width="0.7"/>
+        <path d="M14,8 L14.8,12.5 L14,11 L13.2,12.5 Z M14,20 L14.8,15.5 L14,17 L13.2,15.5 Z M8,14 L12.5,14.8 L11,14 L12.5,13.2 Z M20,14 L15.5,14.8 L17,14 L15.5,13.2 Z" fill="#D4AF37"/>
+      </svg>
+      <svg class="hero-corner bl" viewBox="0 0 56 56">
+        <path d="M1,1 L28,1 M1,1 L1,28" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <path d="M1,14 Q14,14 14,1 M1,22 Q22,22 22,1" fill="none" stroke="#9A7B38" stroke-width="0.6"/>
+        <path d="M8,8 Q14,2 20,8 Q14,6 8,8" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+        <circle cx="14" cy="14" r="2" fill="none" stroke="#F3E5AB" stroke-width="0.7"/>
+        <path d="M14,8 L14.8,12.5 L14,11 L13.2,12.5 Z M14,20 L14.8,15.5 L14,17 L13.2,15.5 Z M8,14 L12.5,14.8 L11,14 L12.5,13.2 Z M20,14 L15.5,14.8 L17,14 L15.5,13.2 Z" fill="#D4AF37"/>
+      </svg>
+      <svg class="hero-corner br" viewBox="0 0 56 56">
+        <path d="M1,1 L28,1 M1,1 L1,28" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <path d="M1,14 Q14,14 14,1 M1,22 Q22,22 22,1" fill="none" stroke="#9A7B38" stroke-width="0.6"/>
+        <path d="M8,8 Q14,2 20,8 Q14,6 8,8" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+        <circle cx="14" cy="14" r="2" fill="none" stroke="#F3E5AB" stroke-width="0.7"/>
+        <path d="M14,8 L14.8,12.5 L14,11 L13.2,12.5 Z M14,20 L14.8,15.5 L14,17 L13.2,15.5 Z M8,14 L12.5,14.8 L11,14 L12.5,13.2 Z M20,14 L15.5,14.8 L17,14 L15.5,13.2 Z" fill="#D4AF37"/>
+      </svg>
+    </div>
+
+    <div class="hero-editorial">
+      <div class="reveal-wrap"><span class="eyebrow" data-reveal>Indore • India — Tradition | Modernity | You</span></div>
+      <div class="reveal-wrap"><p class="hindi-pill" data-reveal style="--delay:80ms">खूबसूरती का खिताब</p></div>
+      <div class="reveal-wrap">
+        <h1 class="hero-headline" data-reveal style="--delay:160ms">Woven in Heritage.<br/>Draped in <em>Modernity.</em></h1>
+      </div>
+      <div class="reveal-wrap">
+        <p class="hero-sub" data-reveal style="--delay:240ms">Handloom craftsmanship from Indore, reimagined for the contemporary Indian muse. Each drape carries ancestral zari, abbla, and moti kinari — finished for the woman who wears tradition as power.</p>
+      </div>
+      <div class="hero-ctas reveal-wrap">
+        <a href="#anatomy" class="btn-gold filled" data-reveal data-cursor="DRAPE" style="--delay:320ms">Explore Flagship Saree</a>
+        <button type="button" class="btn-ghost" id="openReel" data-reveal data-cursor="ZOOM" style="--delay:400ms">
+          <span class="play-icon"></span> Watch the Drape Reel
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-archway">
+      <!-- Outer geometric mandala -->
+      <svg class="mandala-halo" viewBox="0 0 400 400" aria-hidden="true">
+        <circle cx="200" cy="200" r="195" fill="none" stroke="rgba(212,175,55,0.18)" stroke-width="0.5"/>
+        <circle cx="200" cy="200" r="185" fill="none" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 6"/>
+        <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(212,175,55,0.2)" stroke-width="0.5" stroke-dasharray="4 8"/>
+        <g stroke="rgba(212,175,55,0.28)" stroke-width="0.6" fill="none">
+          <path d="M200,12 L214,55 L200,42 L186,55 Z"/>
+          <path d="M200,388 L214,345 L200,358 L186,345 Z"/>
+          <path d="M12,200 L55,214 L42,200 L55,186 Z"/>
+          <path d="M388,200 L345,214 L358,200 L345,186 Z"/>
+        </g>
+        <g fill="none" stroke="rgba(212,175,55,0.16)" stroke-width="0.5">
+          <ellipse cx="200" cy="200" rx="155" ry="70"/>
+          <ellipse cx="200" cy="200" rx="155" ry="70" transform="rotate(45 200 200)"/>
+          <ellipse cx="200" cy="200" rx="155" ry="70" transform="rotate(90 200 200)"/>
+          <ellipse cx="200" cy="200" rx="155" ry="70" transform="rotate(135 200 200)"/>
+        </g>
+        <!-- Lotus petals around ring -->
+        <g fill="none" stroke="rgba(243,229,171,0.35)" stroke-width="0.7">
+          <path d="M200,48 Q210,68 200,78 Q190,68 200,48"/>
+          <path d="M200,48 Q210,68 200,78 Q190,68 200,48" transform="rotate(45 200 200)"/>
+          <path d="M200,48 Q210,68 200,78 Q190,68 200,48" transform="rotate(90 200 200)"/>
+          <path d="M200,48 Q210,68 200,78 Q190,68 200,48" transform="rotate(135 200 200)"/>
+          <path d="M200,48 Q210,68 200,78 Q190,68 200,48" transform="rotate(180 200 200)"/>
+          <path d="M200,48 Q210,68 200,78 Q190,68 200,48" transform="rotate(225 200 200)"/>
+          <path d="M200,48 Q210,68 200,78 Q190,68 200,48" transform="rotate(270 200 200)"/>
+          <path d="M200,48 Q210,68 200,78 Q190,68 200,48" transform="rotate(315 200 200)"/>
+        </g>
+        <circle cx="200" cy="200" r="48" fill="none" stroke="rgba(212,175,55,0.3)" stroke-width="0.8"/>
+        <circle cx="200" cy="200" r="28" fill="none" stroke="rgba(212,175,55,0.22)" stroke-width="0.5"/>
+      </svg>
+      <!-- Counter-rotating inner mandala -->
+      <svg class="mandala-halo inner" viewBox="0 0 400 400" aria-hidden="true">
+        <g fill="none" stroke="rgba(154,123,56,0.35)" stroke-width="0.5">
+          <path d="M200,80 L220,140 L200,120 L180,140 Z"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(30 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(60 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(90 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(120 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(150 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(180 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(210 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(240 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(270 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(300 200 200)"/>
+          <path d="M200,80 L220,140 L200,120 L180,140 Z" transform="rotate(330 200 200)"/>
+        </g>
+        <circle cx="200" cy="200" r="110" fill="none" stroke="rgba(212,175,55,0.2)" stroke-width="0.6" stroke-dasharray="3 5"/>
+      </svg>
+
+      <!-- Crown lotus above arch -->
+      <svg class="hero-arch-ornament top" viewBox="0 0 200 48" aria-hidden="true">
+        <path d="M100,42 Q70,20 60,38 Q80,28 100,42 Q120,28 140,38 Q130,20 100,42" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <path d="M100,42 Q80,12 72,30 Q90,22 100,42 Q110,22 128,30 Q120,12 100,42" fill="none" stroke="#F3E5AB" stroke-width="0.8"/>
+        <path d="M100,42 Q90,8 85,24 Q96,16 100,42 Q104,16 115,24 Q110,8 100,42" fill="none" stroke="#D4AF37" stroke-width="0.9"/>
+        <circle cx="100" cy="18" r="3" fill="none" stroke="#F3E5AB" stroke-width="0.8"/>
+        <line x1="40" y1="40" x2="160" y2="40" stroke="#9A7B38" stroke-width="0.5"/>
+        <path d="M30,40 L36,34 L42,40 M158,40 L164,34 L170,40" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+      </svg>
+
+      <div class="arch-frame is-filled" id="archFrame">
+        <!-- Jaali ring around arch -->
+        <svg class="arch-jaali-ring" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="archStroke" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#F3E5AB" stop-opacity="0.5"/>
+              <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#9A7B38" stop-opacity="0.4"/>
+            </linearGradient>
+          </defs>
+          <path d="M8,48 Q8,8 50,8 Q92,8 92,48 L92,132 L8,132 Z" fill="none" stroke="url(#archStroke)" stroke-width="0.6"/>
+          <path d="M14,48 Q14,14 50,14 Q86,14 86,48 L86,126 L14,126 Z" fill="none" stroke="rgba(212,175,55,0.25)" stroke-width="0.4" stroke-dasharray="2 3"/>
+          <!-- Small diamond accents along arch -->
+          <g fill="#D4AF37" opacity="0.55">
+            <polygon points="50,6 52,10 50,14 48,10"/>
+            <polygon points="22,22 24,26 22,30 20,26"/>
+            <polygon points="78,22 80,26 78,30 76,26"/>
+            <polygon points="8,70 10,74 8,78 6,74"/>
+            <polygon points="92,70 94,74 92,78 90,74"/>
+            <polygon points="8,110 10,114 8,118 6,114"/>
+            <polygon points="92,110 94,114 92,118 90,114"/>
+          </g>
+        </svg>
+        <div class="arch-media">
+          <div class="saree-fallback" id="sareeFallback" aria-hidden="true" style="display:none"></div>
+          <img id="hero-saree-img" src="https://cdn.storebox.ai/media/43619f9b-82c5-45cc-844c-ea5446fc80fa/7d6d9252-edf7-499e-a65d-13b081f57152/flagship-saree.jpg" alt="The Ivory & Maroon Zari Heritage Saree — Narmada Atelier" style="display:block; position:relative; z-index:1;" />
+          <span class="drop-hint">Drop Your Studio Portrait</span>
+          <p class="arch-label">Ivory & Maroon Zari Heritage Saree</p>
+        </div>
+        <button type="button" class="hotspot hs-1" data-hs="0" data-cursor="ZOOM" aria-label="Regal Maroon Blouse"></button>
+        <button type="button" class="hotspot hs-2" data-hs="1" data-cursor="ZOOM" aria-label="Gold Zari Buti"></button>
+        <button type="button" class="hotspot hs-3" data-hs="2" data-cursor="ZOOM" aria-label="Abbla Mirror Border"></button>
+        <button type="button" class="hotspot hs-4" data-hs="3" data-cursor="ZOOM" aria-label="Moti Kinari Edging"></button>
+        <div class="spec-card" id="specCard">
+          <h4 id="specTitle"></h4>
+          <p id="specDesc"></p>
+          <svg id="specWeave" viewBox="0 0 200 48" aria-hidden="true"></svg>
+        </div>
+      </div>
+
+      <!-- Base zari border ornament -->
+      <svg class="hero-arch-ornament base" viewBox="0 0 320 36" aria-hidden="true">
+        <line x1="20" y1="18" x2="300" y2="18" stroke="#9A7B38" stroke-width="0.6"/>
+        <path d="M40,18 L48,8 L56,18 L48,28 Z M80,18 L86,10 L92,18 L86,26 Z M112,18 L120,8 L128,18 L120,28 Z M152,18 L158,10 L164,18 L158,26 Z M184,18 L192,8 L200,18 L192,28 Z M224,18 L230,10 L236,18 L230,26 Z M256,18 L264,8 L272,18 L264,28 Z" fill="none" stroke="#D4AF37" stroke-width="0.8"/>
+        <circle cx="160" cy="18" r="4" fill="none" stroke="#F3E5AB" stroke-width="0.8"/>
+        <circle cx="160" cy="18" r="1.5" fill="#D4AF37"/>
+        <path d="M10,18 Q20,8 30,18 Q20,28 10,18 M290,18 Q300,8 310,18 Q300,28 290,18" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee-section" id="marquee" aria-label="Categories">
+    <div class="marquee-row">
+      <div class="marquee-track">
+        <span class="marquee-item">Sarees <span class="diamond">✦</span> Lehengas <span class="diamond">✦</span> Indo-Western <span class="diamond">✦</span> Women's Wear <span class="diamond">✦</span> खूबसूरती का खिताब <span class="diamond">✦</span> Indore • India <span class="diamond">✦</span></span>
+        <span class="marquee-item">Sarees <span class="diamond">✦</span> Lehengas <span class="diamond">✦</span> Indo-Western <span class="diamond">✦</span> Women's Wear <span class="diamond">✦</span> खूबसूरती का खिताब <span class="diamond">✦</span> Indore • India <span class="diamond">✦</span></span>
+      </div>
+    </div>
+    <div class="marquee-row reverse">
+      <div class="marquee-track">
+        <span class="marquee-item">Tradition <span class="diamond">✦</span> Modernity <span class="diamond">✦</span> You <span class="diamond">✦</span> Handloom Zari <span class="diamond">✦</span> Abbla Work <span class="diamond">✦</span> Moti Kinari <span class="diamond">✦</span> Narmada Atelier <span class="diamond">✦</span></span>
+        <span class="marquee-item">Tradition <span class="diamond">✦</span> Modernity <span class="diamond">✦</span> You <span class="diamond">✦</span> Handloom Zari <span class="diamond">✦</span> Abbla Work <span class="diamond">✦</span> Moti Kinari <span class="diamond">✦</span> Narmada Atelier <span class="diamond">✦</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="section manifesto" id="heritage">
+    <div class="manifesto-inner">
+      <p class="section-label" style="color: var(--gold-antique);">Our Ethos</p>
+      <h2 class="manifesto-title">A Clothing Brand for Indians,<br/>By Indians</h2>
+      <p class="manifesto-words" id="manifestoWords">
+        From the looms of Indore to the modern silhouette — we honour the quiet authority of heritage textiles. Every thread is a conversation between ancestral craft and the woman who wears it today. Narmada Atelier exists so that Indian beauty never needs translation.
+      </p>
+      <div class="pillars" id="pillars">
+        <article class="pillar is-active" data-cursor="EXPLORE">
+          <p class="pillar-num">01 — Pillar</p>
+          <h3>Tradition</h3>
+          <p class="pillar-body">Handwoven kora silk, real gold zari butis, and the patient labour of abbla artisans — craft that cannot be rushed, only revered.</p>
+          <svg class="pillar-motif" viewBox="0 0 80 80" aria-hidden="true">
+            <circle cx="40" cy="40" r="8" fill="none" stroke="#9A7B38" stroke-width="1"/>
+            <circle cx="40" cy="40" r="18" fill="none" stroke="#D4AF37" stroke-width="0.8"/>
+            <path d="M40,12 L42,28 L40,24 L38,28 Z M40,68 L42,52 L40,56 L38,52 Z M12,40 L28,42 L24,40 L28,38 Z M68,40 L52,42 L56,40 L52,38 Z" fill="#D4AF37"/>
+            <path d="M40,22 Q50,40 40,58 Q30,40 40,22" fill="none" stroke="#9A7B38" stroke-width="0.8"/>
+            <ellipse cx="40" cy="40" rx="28" ry="6" fill="none" stroke="#D4AF37" stroke-width="0.6" transform="rotate(30 40 40)"/>
+          </svg>
+        </article>
+        <article class="pillar" data-cursor="EXPLORE">
+          <p class="pillar-num">02 — Pillar</p>
+          <h3>Modernity</h3>
+          <p class="pillar-body">Architectural drapes, cocktail capes, and clean editorial lines — heritage textiles cut for the tempo of contemporary life.</p>
+          <svg class="pillar-motif" viewBox="0 0 80 80" aria-hidden="true">
+            <path d="M20,15 L60,15 L55,70 L25,70 Z" fill="none" stroke="#9A7B38" stroke-width="1"/>
+            <path d="M30,15 Q40,40 35,70 M50,15 Q40,40 45,70" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+            <line x1="25" y1="30" x2="55" y2="30" stroke="#9A7B38" stroke-width="0.5"/>
+            <line x1="27" y1="50" x2="53" y2="50" stroke="#9A7B38" stroke-width="0.5"/>
+          </svg>
+        </article>
+        <article class="pillar" data-cursor="EXPLORE">
+          <p class="pillar-num">03 — Pillar</p>
+          <h3>You</h3>
+          <p class="pillar-body">The modern Indian muse — bridal, festive, everyday regal. Every piece is finished for the woman who claims her title of beauty.</p>
+          <svg class="pillar-motif" viewBox="0 0 80 80" aria-hidden="true">
+            <circle cx="40" cy="28" r="10" fill="none" stroke="#D4AF37" stroke-width="1"/>
+            <path d="M28,42 Q40,38 52,42 L55,72 Q40,68 25,72 Z" fill="none" stroke="#9A7B38" stroke-width="1"/>
+            <path d="M52,48 Q65,55 60,70" fill="none" stroke="#D4AF37" stroke-width="0.8"/>
+            <circle cx="42" cy="22" r="4" fill="none" stroke="#D4AF37" stroke-width="0.7"/>
+          </svg>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANATOMY -->
+  <section class="section anatomy" id="anatomy">
+    <div class="anatomy-grid">
+      <div class="anatomy-sticky">
+        <p class="section-label">Craftsmanship</p>
+        <h2 class="anatomy-title">Anatomy of<br/>the Weave</h2>
+        <div id="chapters">
+          <button type="button" class="chapter is-active" data-chapter="0" data-cursor="ZOOM">
+            <p class="chapter-num">01</p>
+            <p class="chapter-title">Kora Ivory Silk Base</p>
+            <p class="chapter-desc">Pure ivory organza-silk — luminous, breathable, the quiet canvas for every zari flourish.</p>
+          </button>
+          <button type="button" class="chapter" data-chapter="1" data-cursor="ZOOM">
+            <p class="chapter-num">02</p>
+            <p class="chapter-title">Real Gold Zari Buti</p>
+            <p class="chapter-desc">Antique gold floral butis woven into the field — each motif catching light like liquid metal.</p>
+          </button>
+          <button type="button" class="chapter" data-chapter="2" data-cursor="ZOOM">
+            <p class="chapter-num">03</p>
+            <p class="chapter-title">Maroon Abbla Mirror Border</p>
+            <p class="chapter-desc">Regal maroon velvet-silk border with hand-stitched abbla and gold sequin trellis.</p>
+          </button>
+          <button type="button" class="chapter" data-chapter="3" data-cursor="ZOOM">
+            <p class="chapter-num">04</p>
+            <p class="chapter-title">Moti Kinari Finishing</p>
+            <p class="chapter-desc">Delicate pearl edging — hand-knotted moti kinari that frames the drape like jewellery.</p>
+          </button>
+        </div>
+      </div>
+      <div class="craft-stage">
+        <div class="craft-photo-wrap" id="craftPhotoWrap">
+          <div class="craft-photo-fallback" aria-hidden="true"></div>
+          <img class="craft-photo is-active" data-chapter="0" src="https://cdn.storebox.ai/media/43619f9b-82c5-45cc-844c-ea5446fc80fa/75896705-845b-4a82-bc5f-e17e93f0e0b7/01-kora-silk.jpg" alt="Silk saree with gold zari butis — Kora ivory silk craftsmanship" loading="lazy" onerror="this.style.display='none'" />
+          <img class="craft-photo" data-chapter="1" src="https://cdn.storebox.ai/media/43619f9b-82c5-45cc-844c-ea5446fc80fa/b40dd816-ba09-4d98-b16b-e4514375de94/02-gold-zari.jpg" alt="Gold zari brocade and temple waist belt — Real gold zari craft" loading="lazy" onerror="this.style.display='none'" />
+          <img class="craft-photo" data-chapter="2" src="https://cdn.storebox.ai/media/43619f9b-82c5-45cc-844c-ea5446fc80fa/17d3b045-e5a7-4c50-a9ad-ffc205730189/03-abbla-embroidery.jpg" alt="Artisan hand-embroidering abbla and sequin work on silk" loading="lazy" onerror="this.style.display='none'" />
+          <img class="craft-photo" data-chapter="3" src="https://cdn.storebox.ai/media/43619f9b-82c5-45cc-844c-ea5446fc80fa/7be34579-0f64-460c-9461-ca647715461f/04-moti-kinari.jpg" alt="Pearl and bead finishing craftsmanship — Moti kinari detail" loading="lazy" onerror="this.style.display='none'" />
+          <div class="craft-photo-veil" aria-hidden="true"></div>
+          <p class="craft-photo-label" id="craftPhotoLabel">01 — Kora Ivory Silk Base</p>
+          <div class="loom-canvas-wrap">
+            <canvas id="loomCanvas" width="800" height="420" aria-label="Interactive weave visualizer"></canvas>
+            <p class="loom-caption" id="loomCaption">01 — Kora Ivory Silk Base · Move cursor to shift the loom</p>
+          </div>
+        </div>
+        <div class="craft-thumbs" id="craftThumbs" role="tablist" aria-label="Craft chapters">
+          <button type="button" class="craft-thumb is-active" data-chapter="0" data-num="01" data-cursor="ZOOM" aria-label="Kora Ivory Silk">
+            <img src="https://cdn.storebox.ai/media/43619f9b-82c5-45cc-844c-ea5446fc80fa/75896705-845b-4a82-bc5f-e17e93f0e0b7/01-kora-silk.jpg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="craft-thumb" data-chapter="1" data-num="02" data-cursor="ZOOM" aria-label="Gold Zari Buti">
+            <img src="https://cdn.storebox.ai/media/43619f9b-82c5-45cc-844c-ea5446fc80fa/b40dd816-ba09-4d98-b16b-e4514375de94/02-gold-zari.jpg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="craft-thumb" data-chapter="2" data-num="03" data-cursor="ZOOM" aria-label="Abbla Mirror Border">
+            <img src="https://cdn.storebox.ai/media/43619f9b-82c5-45cc-844c-ea5446fc80fa/17d3b045-e5a7-4c50-a9ad-ffc205730189/03-abbla-embroidery.jpg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="craft-thumb" data-chapter="3" data-num="04" data-cursor="ZOOM" aria-label="Moti Kinari">
+            <img src="https://cdn.storebox.ai/media/43619f9b-82c5-45cc-844c-ea5446fc80fa/7be34579-0f64-460c-9461-ca647715461f/04-moti-kinari.jpg" alt="" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials" id="voices">
+    <div class="testimonials-inner">
+      <div class="testimonials-head">
+        <p class="section-label">Atelier Voices</p>
+        <h2 class="testimonials-title">Worn. Cherished. Remembered.</h2>
+        <p class="testimonials-sub">Notes from brides, muses, and patrons who chose Narmada Atelier for moments that matter.</p>
+      </div>
+      <div class="testimonial-grid">
+        <article class="testimonial-card" data-reveal data-cursor="EXPLORE">
+          <div class="testimonial-stars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <blockquote class="testimonial-quote">The Ivory & Maroon saree felt like heirloom the moment I draped it — every abbla caught the mandap lights.</blockquote>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar" aria-hidden="true">A</div>
+            <div>
+              <p class="testimonial-name">Ananya Sharma</p>
+              <p class="testimonial-role">Bridal Trousseau · Indore</p>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card" data-reveal style="--delay:80ms" data-cursor="EXPLORE">
+          <div class="testimonial-stars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <blockquote class="testimonial-quote">Private viewing was unhurried and intimate. They understood exactly how I wanted tradition to sit on a modern silhouette.</blockquote>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar" aria-hidden="true">R</div>
+            <div>
+              <p class="testimonial-name">Riya Mehta</p>
+              <p class="testimonial-role">Festive Couture · Mumbai</p>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card" data-reveal style="--delay:160ms" data-cursor="EXPLORE">
+          <div class="testimonial-stars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <blockquote class="testimonial-quote">From packaging to pallu — the craftsmanship is quiet luxury. Guests kept asking whose atelier it was.</blockquote>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar" aria-hidden="true">P</div>
+            <div>
+              <p class="testimonial-name">Priya Kapoor</p>
+              <p class="testimonial-role">Custom Saree Drape · Delhi</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <div class="faq-inner">
+      <div class="faq-head">
+        <p class="section-label">Atelier Notes</p>
+        <h2 class="faq-title">Questions, Answered</h2>
+        <p class="faq-sub">Everything you may wish to know before booking a private viewing or commissioning a drape.</p>
+      </div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item is-open">
+          <button type="button" class="faq-q" aria-expanded="true" data-cursor="EXPLORE">
+            <span>How do I book a private viewing?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a">
+            <p>Use the consultation form below, message us on Instagram @narmadaatelier, or WhatsApp. Share your occasion, city, and preferred date — we will confirm a studio slot in Indore or arrange a virtual viewing.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-cursor="EXPLORE">
+            <span>Do you ship outside Indore?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. We ship pan-India with careful artisanal packaging. International inquiries are accepted case-by-case for bridal and bespoke commissions.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-cursor="EXPLORE">
+            <span>Can pieces be customised?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a">
+            <p>Absolutely. Blouse embroidery, border density, moti kinari finishing, and colour stories can be tailored. Lead times vary with handwork — typically 2–6 weeks for bespoke drapes.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-cursor="EXPLORE">
+            <span>What is the price range?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a">
+            <p>Flagship heritage sarees begin around ₹18,500. Lehengas and indo-western commissions are quote-based after a private consultation, depending on zari, abbla, and silhouette.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-cursor="EXPLORE">
+            <span>How should I care for zari & abbla work?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a">
+            <p>Dry clean only with a heritage-textile specialist. Store flat or loosely rolled in the butter-paper packaging provided, away from moisture and direct sunlight, to preserve gold zari and mirror work.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-cursor="EXPLORE">
+            <span>Do you offer rentals or returns?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a">
+            <p>Ready pieces may be exchanged within 3 days if unused and tags intact. Bespoke commissions are final once embroidery begins. We do not currently offer rentals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSULTATION -->
+  <section class="section consult" id="bespoke">
+    <div class="consult-card">
+      <svg class="filigree tl" viewBox="0 0 48 48" aria-hidden="true"><path d="M0,0 L48,0 M0,0 L0,48" fill="none" stroke="#D4AF37" stroke-width="1"/><path d="M0,12 Q12,12 12,0 M0,24 Q24,24 24,0" fill="none" stroke="#9A7B38" stroke-width="0.6"/><circle cx="8" cy="8" r="2" fill="none" stroke="#D4AF37" stroke-width="0.7"/></svg>
+      <svg class="filigree tr" viewBox="0 0 48 48" aria-hidden="true"><path d="M0,0 L48,0 M0,0 L0,48" fill="none" stroke="#D4AF37" stroke-width="1"/><path d="M0,12 Q12,12 12,0 M0,24 Q24,24 24,0" fill="none" stroke="#9A7B38" stroke-width="0.6"/><circle cx="8" cy="8" r="2" fill="none" stroke="#D4AF37" stroke-width="0.7"/></svg>
+      <svg class="filigree bl" viewBox="0 0 48 48" aria-hidden="true"><path d="M0,0 L48,0 M0,0 L0,48" fill="none" stroke="#D4AF37" stroke-width="1"/><path d="M0,12 Q12,12 12,0 M0,24 Q24,24 24,0" fill="none" stroke="#9A7B38" stroke-width="0.6"/><circle cx="8" cy="8" r="2" fill="none" stroke="#D4AF37" stroke-width="0.7"/></svg>
+      <svg class="filigree br" viewBox="0 0 48 48" aria-hidden="true"><path d="M0,0 L48,0 M0,0 L0,48" fill="none" stroke="#D4AF37" stroke-width="1"/><path d="M0,12 Q12,12 12,0 M0,24 Q24,24 24,0" fill="none" stroke="#9A7B38" stroke-width="0.6"/><circle cx="8" cy="8" r="2" fill="none" stroke="#D4AF37" stroke-width="0.7"/></svg>
+
+      <p class="section-label" style="text-align:center">Private Atelier</p>
+      <h2 class="consult-title">Book a Private Viewing</h2>
+      <p class="consult-sub">Bespoke consultation via Instagram DM or WhatsApp — Indore studio & nationwide.</p>
+
+      <form id="consultForm" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="clientName">Your Name</label>
+            <input type="text" id="clientName" name="name" required placeholder="Full name" autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="clientCity">Preferred City</label>
+            <input type="text" id="clientCity" name="city" placeholder="Indore / Mumbai / Delhi…" />
+          </div>
+          <div class="form-group">
+            <label for="clientDate">Preferred Date</label>
+            <input type="date" id="clientDate" name="date" />
+          </div>
+          <div class="form-group">
+            <label for="clientContact">WhatsApp / Email</label>
+            <input type="text" id="clientContact" name="contact" placeholder="+91 or email" />
+          </div>
+          <div class="form-group full">
+            <label>Occasion</label>
+            <div class="occasion-chips" id="occasionChips">
+              <button type="button" class="chip is-selected" data-occasion="Bridal Trousseau">Bridal Trousseau</button>
+              <button type="button" class="chip" data-occasion="Festive Couture">Festive Couture</button>
+              <button type="button" class="chip" data-occasion="Custom Saree Drape">Custom Saree Drape</button>
+              <button type="button" class="chip" data-occasion="Indo-Western Bespoke">Indo-Western Bespoke</button>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="clientNote">Note</label>
+            <textarea id="clientNote" name="note" placeholder="Tell us about the silhouette, colour, or ceremony…"></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-gold filled" data-cursor="EXPLORE">Generate Inquiry</button>
+          <a class="btn-gold" id="waLink" href="https://wa.me/?text=" target="_blank" rel="noopener" data-cursor="EXPLORE">WhatsApp Concierge</a>
+          <a class="btn-ghost" href="https://instagram.com/narmadaatelier" target="_blank" rel="noopener" data-cursor="EXPLORE">Instagram DM @narmadaatelier</a>
+        </div>
+      </form>
+      <div class="social-links">
+        <a href="https://instagram.com/narmadaatelier" target="_blank" rel="noopener">Instagram @narmadaatelier</a>
+        <a href="https://youtube.com/@narmamdaatelier" target="_blank" rel="noopener">YouTube @narmamdaatelier</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-wordmark" aria-hidden="true">
+    <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wmGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#8A6623"/>
+          <stop offset="30%" stop-color="#D4AF37"/>
+          <stop offset="50%" stop-color="#F3E5AB"/>
+          <stop offset="70%" stop-color="#D4AF37"/>
+          <stop offset="100%" stop-color="#8A6623"/>
+        </linearGradient>
+      </defs>
+      <text x="600" y="85" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="92" font-weight="300" letter-spacing="18" fill="url(#wmGrad)">NARMADA ATELIER</text>
+    </svg>
+  </div>
+  <div class="footer-grid">
+    <div>
+      <p class="footer-brand-name">Narmada Atelier</p>
+      <p class="footer-hindi">खूबसूरती का खिताब</p>
+      <p class="footer-coords">Indore • India<br/>A clothing brand for Indians, by Indians<br/>Tradition | Modernity | You</p>
+    </div>
+    <div class="footer-links">
+      <h5>Explore</h5>
+      <a href="#heritage">The Heritage</a>
+      <a href="#anatomy">Anatomy of Zari</a>
+      <a href="#voices">Client Voices</a>
+      <a href="#faq">FAQ</a>
+      <a href="#bespoke">Bespoke Drape</a>
+    </div>
+    <div class="footer-links">
+      <h5>Collections</h5>
+      <a href="#hero">Sarees</a>
+      <a href="#bespoke">Lehengas</a>
+      <a href="#bespoke">Indo-Western</a>
+      <a href="#bespoke">Women's Wear</a>
+    </div>
+    <div class="footer-links">
+      <h5>Connect</h5>
+      <a href="https://instagram.com/narmadaatelier" target="_blank" rel="noopener">@narmadaatelier</a>
+      <a href="https://youtube.com/@narmamdaatelier" target="_blank" rel="noopener">@narmamdaatelier</a>
+      <a href="#bespoke">Private Viewing</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Narmada Atelier. All rights reserved.</p>
+    <a href="#top" class="back-top" data-cursor="EXPLORE">
+      <svg viewBox="0 0 16 24" fill="none" aria-hidden="true">
+        <path d="M8,22 L8,4 M8,4 L3,9 M8,4 L13,9" stroke="currentColor" stroke-width="1"/>
+        <circle cx="8" cy="2" r="1.5" fill="currentColor"/>
+      </svg>
+      Back to Top
+    </a>
+  </div>
+</footer>
+
+<!-- Reel Modal -->
+<div class="modal-overlay" id="reelModal" role="dialog" aria-modal="true" aria-labelledby="reelTitle">
+  <div class="modal">
+    <button type="button" class="modal-close" id="closeReel" aria-label="Close">×</button>
+    <div class="modal-body">
+      <p class="section-label" id="reelTitle">Drape Reel</p>
+      <div class="modal-video-placeholder">
+        <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="22" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <path d="M20,16 L34,24 L20,32 Z" fill="#D4AF37"/>
+        </svg>
+        <p>Watch on YouTube @narmamdaatelier</p>
+        <a href="https://youtube.com/@narmamdaatelier" target="_blank" rel="noopener" class="btn-gold">Open Channel</a>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-muted);font-weight:300;line-height:1.65;">Experience the Ivory & Maroon Zari Heritage Saree in motion — the fall of organza-silk, the catch of antique gold butis, the weight of maroon abbla borders.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Upload FAB -->
+<label class="upload-fab" data-cursor="ZOOM">
+  <input type="file" id="sareeUpload" accept="image/*" />
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8,2 L8,14 M2,8 L14,8" stroke="currentColor" stroke-width="1.2"/></svg>
+  <span class="txt">Upload / Swap Saree Image</span>
+</label>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---------- Preloader ---------- */
+  const preloader = document.getElementById('preloader');
+  document.documentElement.classList.add('loading');
+  window.addEventListener('load', () => {
+    const delay = reduced ? 200 : 2200;
+    setTimeout(() => {
+      preloader.classList.add('is-done');
+      document.documentElement.classList.remove('loading');
+      setTimeout(() => {
+        preloader.classList.add('is-gone');
+        document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+          if (el.getBoundingClientRect().top < window.innerHeight) {
+            setTimeout(() => el.classList.add('is-in'), i * 40);
+          }
+        });
+      }, reduced ? 100 : 1200);
+    }, delay);
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Custom Cursor ---------- */
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  const label = document.getElementById('cursorLabel');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  /* Hero-only gold zari trail */
+  const heroEl = document.getElementById('hero');
+  const trailLayer = document.getElementById('heroTrail');
+  let trailActive = false;
+  let lastTrailX = 0, lastTrailY = 0;
+  const trailPool = [];
+  const TRAIL_MAX = 28;
+
+  function spawnTrail(x, y) {
+    if (!trailLayer || reduced) return;
+    const dist = Math.hypot(x - lastTrailX, y - lastTrailY);
+    if (dist < 10) return;
+    lastTrailX = x;
+    lastTrailY = y;
+
+    let el = trailPool.pop();
+    if (!el) {
+      el = document.createElement('span');
+      el.className = 'hero-trail-dot';
+    }
+    const size = 4 + Math.random() * 7;
+    const ox = (Math.random() - 0.5) * 10;
+    const oy = (Math.random() - 0.5) * 10;
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    el.style.opacity = String(0.55 + Math.random() * 0.4);
+    el.style.left = (x + ox) + 'px';
+    el.style.top = (y + oy) + 'px';
+    el.style.transform = 'translate(-50%, -50%) scale(1)';
+    trailLayer.appendChild(el);
+
+    const life = 420 + Math.random() * 280;
+    const start = performance.now();
+    (function fade(now) {
+      const t = Math.min(1, (now - start) / life);
+      const ease = 1 - Math.pow(1 - t, 2);
+      el.style.opacity = String((1 - ease) * 0.75);
+      el.style.transform = `translate(-50%, -50%) scale(${1 - ease * 0.85}) translate(${oy * ease * 0.3}px, ${12 * ease}px)`;
+      if (t < 1) {
+        requestAnimationFrame(fade);
+      } else {
+        if (el.parentNode) el.parentNode.removeChild(el);
+        if (trailPool.length < TRAIL_MAX) trailPool.push(el);
+      }
+    })(start);
+  }
+
+  function isOverHero(x, y) {
+    if (!heroEl) return false;
+    const r = heroEl.getBoundingClientRect();
+    return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+  }
+
+  if (finePointer) {
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+      trailActive = isOverHero(mx, my);
+      if (trailActive && !reduced) spawnTrail(mx, my);
+    });
+
+    (function cursorLoop() {
+      rx = lerp(rx, mx, 0.14);
+      ry = lerp(ry, my, 0.14);
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      requestAnimationFrame(cursorLoop);
+    })();
+
+    document.querySelectorAll('[data-cursor], a, button, .hotspot, .chapter, .craft-thumb, .chip, .pillar').forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        ring.classList.add('is-hover');
+        label.textContent = el.getAttribute('data-cursor') || 'EXPLORE';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.classList.remove('is-hover');
+        label.textContent = '';
+      });
+    });
+  }
+
+  /* ---------- Zari Scroll Thread ---------- */
+  const path = document.getElementById('zari-scroll-thread');
+  const shuttle = document.getElementById('shuttle');
+  if (path && !reduced) {
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = String(len);
+    path.style.strokeDashoffset = String(len);
+    let target = len, current = len;
+
+    function updateThread() {
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const p = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+      target = len * (1 - p);
+    }
+
+    function threadLoop() {
+      current = lerp(current, target, 0.08);
+      path.style.strokeDashoffset = String(current);
+      const drawn = len - current;
+      const pt = path.getPointAtLength(Math.min(len, Math.max(0, drawn)));
+      shuttle.setAttribute('cx', pt.x);
+      shuttle.setAttribute('cy', pt.y);
+      requestAnimationFrame(threadLoop);
+    }
+    window.addEventListener('scroll', updateThread, { passive: true });
+    updateThread();
+    threadLoop();
+  }
+
+  /* ---------- Reveal Observer ---------- */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) en.target.classList.add('is-in');
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('[data-reveal]').forEach((el) => revealObs.observe(el));
+
+  /* ---------- Theme switch on manifesto ---------- */
+  const manifesto = document.getElementById('heritage');
+  const themeObs = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting && en.intersectionRatio > 0.35) {
+        document.body.classList.add('theme-ivory');
+      } else if (!en.isIntersecting || en.boundingClientRect.top > 0) {
+        if (en.boundingClientRect.top > window.innerHeight * 0.3) {
+          document.body.classList.remove('theme-ivory');
+        }
+      }
+    });
+  }, { threshold: [0.2, 0.35, 0.5] });
+  if (manifesto) themeObs.observe(manifesto);
+
+  window.addEventListener('scroll', () => {
+    const r = manifesto.getBoundingClientRect();
+    const inView = r.top < window.innerHeight * 0.55 && r.bottom > window.innerHeight * 0.35;
+    document.body.classList.toggle('theme-ivory', inView);
+  }, { passive: true });
+
+  /* ---------- Manifesto word scrub ---------- */
+  const wordsEl = document.getElementById('manifestoWords');
+  if (wordsEl) {
+    const text = wordsEl.textContent.trim();
+    wordsEl.innerHTML = text.split(/(\s+)/).map((w) => {
+      if (/^\s+$/.test(w)) return w;
+      return `<span class="word">${w}</span>`;
+    }).join('');
+    const words = wordsEl.querySelectorAll('.word');
+
+    function scrubWords() {
+      const rect = wordsEl.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const start = vh * 0.85;
+      const end = vh * 0.25;
+      let progress = (start - rect.top) / (start - end);
+      progress = Math.min(1, Math.max(0, progress));
+      const count = Math.floor(progress * words.length);
+      words.forEach((w, i) => {
+        w.style.opacity = i < count ? '1' : '0.2';
+      });
+    }
+    window.addEventListener('scroll', scrubWords, { passive: true });
+    scrubWords();
+  }
+
+  /* ---------- Pillars ---------- */
+  document.querySelectorAll('.pillar').forEach((p) => {
+    p.addEventListener('mouseenter', () => {
+      document.querySelectorAll('.pillar').forEach((x) => x.classList.remove('is-active'));
+      p.classList.add('is-active');
+    });
+  });
+
+  /* ---------- Marquee slow on hover ---------- */
+  const marquee = document.getElementById('marquee');
+  if (marquee) {
+    marquee.addEventListener('mouseenter', () => marquee.classList.add('is-slow'));
+    marquee.addEventListener('mouseleave', () => marquee.classList.remove('is-slow'));
+  }
+
+  /* ---------- Hotspots ---------- */
+  const hotspots = [
+    {
+      title: 'Regal Maroon Velvet-Silk Blouse',
+      desc: 'Rich maroon embroidered blouse — the regal counterpart to ivory organza, finished for bridal and festive draping.',
+      weave: (svg) => {
+        svg.innerHTML = `<rect x="0" y="0" width="200" height="48" fill="#24090D"/><rect x="0" y="18" width="200" height="12" fill="#6B1420"/><circle cx="20" cy="24" r="3" fill="#D4AF37"/><circle cx="50" cy="24" r="2" fill="#F3E5AB"/><circle cx="80" cy="24" r="3" fill="#D4AF37"/><circle cx="110" cy="24" r="2" fill="#F3E5AB"/><circle cx="140" cy="24" r="3" fill="#D4AF37"/><circle cx="170" cy="24" r="2" fill="#F3E5AB"/>`;
+      }
+    },
+    {
+      title: 'Antique Gold Zari Floral Buti',
+      desc: 'Handwoven floral butis in antique gold zari across the ivory field — metallic light that moves with every fold.',
+      weave: (svg) => {
+        svg.innerHTML = `<rect width="200" height="48" fill="#F2ECE1"/><g fill="none" stroke="#D4AF37" stroke-width="0.8">${[20,60,100,140,180].map(x=>`<circle cx="${x}" cy="24" r="8"/><path d="M${x},${16} L${x},${32} M${x-8},24 L${x+8},24"/>`).join('')}</g>`;
+      }
+    },
+    {
+      title: 'Hand-Stitched Abbla & Sequin Border',
+      desc: 'Maroon velvet-silk border with abbla (mirror) work and gold sequin trellis — reflective geometry for royal framing.',
+      weave: (svg) => {
+        svg.innerHTML = `<rect width="200" height="48" fill="#6B1420"/><g fill="#F3E5AB">${[15,45,75,105,135,165].map(x=>`<polygon points="${x},10 ${x+6},24 ${x},38 ${x-6},24"/>`).join('')}</g><line x1="0" y1="8" x2="200" y2="8" stroke="#D4AF37" stroke-width="1"/><line x1="0" y1="40" x2="200" y2="40" stroke="#D4AF37" stroke-width="1"/>`;
+      }
+    },
+    {
+      title: 'Hand-Knotted Moti Kinari',
+      desc: 'Delicate pearl edging — moti kinari hand-knotted along the pallu and border, jewellery for the drape itself.',
+      weave: (svg) => {
+        svg.innerHTML = `<rect width="200" height="48" fill="#120E0E"/><line x1="0" y1="24" x2="200" y2="24" stroke="#9A7B38" stroke-width="1"/><g fill="#FAF6F0">${Array.from({length:16},(_,i)=>`<circle cx="${12+i*12}" cy="24" r="3.5"/>`).join('')}</g>`;
+      }
+    }
+  ];
+
+  const specCard = document.getElementById('specCard');
+  const specTitle = document.getElementById('specTitle');
+  const specDesc = document.getElementById('specDesc');
+  const specWeave = document.getElementById('specWeave');
+  let activeHs = null;
+
+  document.querySelectorAll('.hotspot').forEach((btn) => {
+    const open = () => {
+      const i = +btn.dataset.hs;
+      const data = hotspots[i];
+      specTitle.textContent = data.title;
+      specDesc.textContent = data.desc;
+      data.weave(specWeave);
+      specCard.classList.add('is-open');
+
+      const pad = 12;
+      const frame = btn.parentElement;
+      const rect = frame.getBoundingClientRect();
+      const br = btn.getBoundingClientRect();
+      const cardW = Math.min(240, rect.width - pad * 2);
+      const cardH = specCard.offsetHeight || 200;
+      const hx = br.left - rect.left + br.width / 2;
+      const hy = br.top - rect.top + br.height / 2;
+
+      let left = hx + 18;
+      if (left + cardW > rect.width - pad) left = hx - cardW - 18;
+      left = Math.max(pad, Math.min(left, rect.width - cardW - pad));
+
+      let top = hy - cardH / 2;
+      if (top < pad) top = pad;
+      if (top + cardH > rect.height - pad) top = Math.max(pad, rect.height - cardH - pad);
+
+      specCard.style.width = cardW + 'px';
+      specCard.style.left = left + 'px';
+      specCard.style.top = top + 'px';
+      document.querySelectorAll('.hotspot').forEach((h) => h.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      activeHs = i;
+    };
+    btn.addEventListener('mouseenter', open);
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (activeHs === +btn.dataset.hs && specCard.classList.contains('is-open')) {
+        specCard.classList.remove('is-open');
+        btn.classList.remove('is-active');
+        activeHs = null;
+      } else open();
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.hotspot') && !e.target.closest('.spec-card')) {
+      specCard.classList.remove('is-open');
+      document.querySelectorAll('.hotspot').forEach((h) => h.classList.remove('is-active'));
+      activeHs = null;
+    }
+  });
+
+  /* ---------- Arch drop / upload ---------- */
+  const archFrame = document.getElementById('archFrame');
+  const heroImg = document.getElementById('hero-saree-img');
+  const sareeFallback = document.getElementById('sareeFallback');
+  const uploadInput = document.getElementById('sareeUpload');
+  const toast = document.getElementById('toast');
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('is-show');
+    setTimeout(() => toast.classList.remove('is-show'), 2800);
+  }
+
+  function applySareeImage(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      showToast('Please select an image file.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const url = ev.target.result;
+      heroImg.src = url;
+      heroImg.style.display = 'block';
+      sareeFallback.style.display = 'none';
+      archFrame.classList.add('is-filled');
+      showToast('Portrait loaded into hero.');
+    };
+    reader.readAsDataURL(file);
+  }
+
+  uploadInput.addEventListener('change', (e) => {
+    const f = e.target.files && e.target.files[0];
+    if (f) applySareeImage(f);
+  });
+
+  ['dragenter', 'dragover'].forEach((evt) => {
+    archFrame.addEventListener(evt, (e) => {
+      e.preventDefault();
+      archFrame.classList.add('is-dragover');
+    });
+  });
+  ['dragleave', 'drop'].forEach((evt) => {
+    archFrame.addEventListener(evt, (e) => {
+      e.preventDefault();
+      archFrame.classList.remove('is-dragover');
+    });
+  });
+  archFrame.addEventListener('drop', (e) => {
+    const f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f) applySareeImage(f);
+  });
+
+  /* ---------- Loom Canvas ---------- */
+  const canvas = document.getElementById('loomCanvas');
+  const ctx = canvas.getContext('2d');
+  const loomCaption = document.getElementById('loomCaption');
+  let chapter = 0;
+  let loomMx = 0.5, loomMy = 0.5;
+  let shimmerT = 0;
+
+  const chaptersMeta = [
+    { caption: '01 — Kora Ivory Silk Base · Move cursor to shift the loom', label: '01 — Kora Ivory Silk Base', bg: ['#FBF8F3', '#F2ECE1'], thread: '#D4C4A8', accent: '#9A7B38', density: 18, speed: 0.4 },
+    { caption: '02 — Real Gold Zari Buti · Metallic shimmer follows your hand', label: '02 — Real Gold Zari Buti', bg: ['#F2ECE1', '#E8DFD0'], thread: '#D4AF37', accent: '#F3E5AB', density: 14, speed: 1.2 },
+    { caption: '03 — Maroon Abbla Mirror Border · Reflective geometry', label: '03 — Maroon Abbla Mirror Border', bg: ['#24090D', '#6B1420'], thread: '#D4AF37', accent: '#F3E5AB', density: 12, speed: 0.8 },
+    { caption: '04 — Moti Kinari Finishing · Pearl rhythm along the edge', label: '04 — Moti Kinari Finishing', bg: ['#120E0E', '#1A1412'], thread: '#A89F94', accent: '#FAF6F0', density: 20, speed: 0.6 }
+  ];
+  const craftPhotoLabel = document.getElementById('craftPhotoLabel');
+
+  function setCraftChapter(index) {
+    chapter = index;
+    document.querySelectorAll('.chapter').forEach((c) => {
+      c.classList.toggle('is-active', +c.dataset.chapter === index);
+    });
+    document.querySelectorAll('.craft-thumb').forEach((t) => {
+      t.classList.toggle('is-active', +t.dataset.chapter === index);
+    });
+    document.querySelectorAll('.craft-photo').forEach((img) => {
+      img.classList.toggle('is-active', +img.dataset.chapter === index);
+    });
+    if (loomCaption) loomCaption.textContent = chaptersMeta[index].caption;
+    if (craftPhotoLabel) craftPhotoLabel.textContent = chaptersMeta[index].label;
+  }
+
+  function drawLoom() {
+    const w = canvas.width, h = canvas.height;
+    const meta = chaptersMeta[chapter];
+    const g = ctx.createLinearGradient(0, 0, w, h);
+    g.addColorStop(0, meta.bg[0]);
+    g.addColorStop(1, meta.bg[1]);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, w, h);
+
+    const dens = meta.density;
+    const ox = (loomMx - 0.5) * 40;
+    const oy = (loomMy - 0.5) * 40;
+    shimmerT += 0.02 * meta.speed;
+
+    ctx.strokeStyle = meta.thread;
+    ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.45;
+    for (let i = 0; i < dens; i++) {
+      const x = (i / dens) * w + ox;
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x + Math.sin(shimmerT + i * 0.3) * 6, h);
+      ctx.stroke();
+    }
+    for (let j = 0; j < dens; j++) {
+      const y = (j / dens) * h + oy;
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y + Math.cos(shimmerT + j * 0.25) * 4);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    if (chapter === 1) {
+      ctx.fillStyle = meta.accent;
+      for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 5; col++) {
+          const bx = (col + 0.5) / 5 * w + ox * 0.5;
+          const by = (row + 0.5) / 5 * h + oy * 0.5;
+          const pulse = 6 + Math.sin(shimmerT * 2 + row + col) * 2;
+          ctx.globalAlpha = 0.35 + Math.sin(shimmerT + col) * 0.15;
+          ctx.beginPath();
+          ctx.arc(bx, by, pulse, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(bx, by - pulse);
+          ctx.lineTo(bx, by + pulse);
+          ctx.moveTo(bx - pulse, by);
+          ctx.lineTo(bx + pulse, by);
+          ctx.strokeStyle = meta.thread;
+          ctx.stroke();
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    if (chapter === 2) {
+      const borderH = h * 0.22;
+      ctx.fillStyle = '#6B1420';
+      ctx.fillRect(0, h - borderH, w, borderH);
+      for (let i = 0; i < 12; i++) {
+        const x = ((i + 0.5) / 12) * w;
+        const y = h - borderH / 2;
+        const s = 10 + Math.sin(shimmerT * 3 + i) * 3;
+        ctx.save();
+        ctx.translate(x + ox * 0.2, y);
+        ctx.rotate(Math.PI / 4);
+        ctx.fillStyle = `rgba(243,229,171,${0.5 + Math.sin(shimmerT + i) * 0.3})`;
+        ctx.fillRect(-s / 2, -s / 2, s, s);
+        ctx.restore();
+      }
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, h - borderH);
+      ctx.lineTo(w, h - borderH);
+      ctx.stroke();
+    }
+
+    if (chapter === 3) {
+      for (let i = 0; i < 28; i++) {
+        const x = ((i + 0.5) / 28) * w;
+        const y = h * 0.5 + Math.sin(shimmerT + i * 0.4) * 20 + oy;
+        ctx.beginPath();
+        ctx.arc(x, y, 5, 0, Math.PI * 2);
+        ctx.fillStyle = meta.accent;
+        ctx.globalAlpha = 0.85;
+        ctx.fill();
+        ctx.strokeStyle = meta.thread;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = meta.thread;
+      ctx.beginPath();
+      ctx.moveTo(0, h * 0.5 + oy);
+      for (let i = 0; i <= 28; i++) {
+        const x = (i / 28) * w;
+        ctx.lineTo(x, h * 0.5 + Math.sin(shimmerT + i * 0.4) * 20 + oy);
+      }
+      ctx.stroke();
+    }
+
+    /* cursor light catch */
+    const lg = ctx.createRadialGradient(loomMx * w, loomMy * h, 0, loomMx * w, loomMy * h, 180);
+    lg.addColorStop(0, 'rgba(243,229,171,0.18)');
+    lg.addColorStop(1, 'rgba(243,229,171,0)');
+    ctx.fillStyle = lg;
+    ctx.fillRect(0, 0, w, h);
+
+    if (!reduced) requestAnimationFrame(drawLoom);
+  }
+
+  if (canvas) {
+    canvas.addEventListener('mousemove', (e) => {
+      const r = canvas.getBoundingClientRect();
+      loomMx = (e.clientX - r.left) / r.width;
+      loomMy = (e.clientY - r.top) / r.height;
+      if (reduced) drawLoom();
+    });
+    drawLoom();
+  }
+
+  document.querySelectorAll('.chapter, .craft-thumb').forEach((btn) => {
+    btn.addEventListener('click', () => setCraftChapter(+btn.dataset.chapter));
+  });
+
+  /* ---------- Modals ---------- */
+  function openModal(el) {
+    el.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(el) {
+    el.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('openReel').addEventListener('click', () => openModal(document.getElementById('reelModal')));
+  document.getElementById('closeReel').addEventListener('click', () => closeModal(document.getElementById('reelModal')));
+
+  document.querySelectorAll('.modal-overlay').forEach((ov) => {
+    ov.addEventListener('click', (e) => {
+      if (e.target === ov) closeModal(ov);
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.is-open').forEach(closeModal);
+    }
+  });
+
+  /* ---------- Mobile nav ---------- */
+  const navToggle = document.getElementById('navToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  navToggle.addEventListener('click', () => {
+    mobileNav.classList.toggle('is-open');
+  });
+  mobileNav.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => mobileNav.classList.remove('is-open'));
+  });
+
+  /* ---------- Audio ambience (Web Audio drone) ---------- */
+  let audioCtx = null, osc = null, gain = null, lfo = null;
+  const audioBtn = document.getElementById('audioToggle');
+  audioBtn.addEventListener('click', async () => {
+    if (!audioBtn.classList.contains('is-on')) {
+      try {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        osc = audioCtx.createOscillator();
+        const osc2 = audioCtx.createOscillator();
+        gain = audioCtx.createGain();
+        lfo = audioCtx.createOscillator();
+        const lfoGain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = 110;
+        osc2.type = 'sine';
+        osc2.frequency.value = 164.81;
+        gain.gain.value = 0.0001;
+        lfo.frequency.value = 0.08;
+        lfoGain.gain.value = 0.012;
+        lfo.connect(lfoGain);
+        lfoGain.connect(gain.gain);
+        osc.connect(gain);
+        osc2.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc2.start();
+        lfo.start();
+        gain.gain.exponentialRampToValueAtTime(0.025, audioCtx.currentTime + 1.5);
+        audioBtn.classList.add('is-on');
+        audioBtn.setAttribute('aria-pressed', 'true');
+      } catch (err) {
+        showToast('Audio unavailable in this browser.');
+      }
+    } else {
+      if (gain && audioCtx) {
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
+        setTimeout(() => {
+          try { osc.stop(); audioCtx.close(); } catch (_) {}
+          audioCtx = null;
+        }, 900);
+      }
+      audioBtn.classList.remove('is-on');
+      audioBtn.setAttribute('aria-pressed', 'false');
+    }
+  });
+
+  /* ---------- Consultation form ---------- */
+  let selectedOccasion = 'Bridal Trousseau';
+  document.querySelectorAll('#occasionChips .chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#occasionChips .chip').forEach((c) => c.classList.remove('is-selected'));
+      chip.classList.add('is-selected');
+      selectedOccasion = chip.dataset.occasion;
+    });
+  });
+
+  function buildInquiryPlain() {
+    return [
+      'Namaste Narmada Atelier (@narmadaatelier),',
+      '',
+      'I would like to book a private viewing.',
+      '',
+      'Name: ' + (document.getElementById('clientName').value.trim() || 'Guest'),
+      'Occasion: ' + selectedOccasion,
+      'City: ' + (document.getElementById('clientCity').value.trim() || '—'),
+      'Preferred date: ' + (document.getElementById('clientDate').value || '—'),
+      'Contact: ' + (document.getElementById('clientContact').value.trim() || '—'),
+      'Note: ' + (document.getElementById('clientNote').value.trim() || '—'),
+      '',
+      '— Sent from Narmada Atelier site'
+    ].join('\n');
+  }
+
+  function updateWaLink() {
+    document.getElementById('waLink').href = 'https://wa.me/?text=' + encodeURIComponent(buildInquiryPlain());
+  }
+
+  ['clientName', 'clientCity', 'clientDate', 'clientContact', 'clientNote'].forEach((id) => {
+    const el = document.getElementById(id);
+    el.addEventListener('input', updateWaLink);
+  });
+  updateWaLink();
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('#faqList .faq-item').forEach((item) => {
+    const btn = item.querySelector('.faq-q');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const open = item.classList.contains('is-open');
+      document.querySelectorAll('#faqList .faq-item').forEach((other) => {
+        other.classList.remove('is-open');
+        const b = other.querySelector('.faq-q');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!open) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.getElementById('consultForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    updateWaLink();
+    const plain = buildInquiryPlain();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(plain).then(() => {
+        showToast('Inquiry copied — opening WhatsApp…');
+        window.open(document.getElementById('waLink').href, '_blank');
+      }).catch(() => {
+        window.open(document.getElementById('waLink').href, '_blank');
+      });
+    } else {
+      window.open(document.getElementById('waLink').href, '_blank');
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
